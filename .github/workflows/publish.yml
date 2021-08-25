@@ -4,9 +4,6 @@ on:
 
 jobs:
   Publish:
-    defaults:
-      run:
-        working-directory: boardgent-console
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,6 +13,7 @@ jobs:
       - name: npm clear cache
         run: npm cache clear --force
       - name: npm install
+        run: npm i
       - name: run linter validation
         run: npm run lint
       - name: Publish to AWS
