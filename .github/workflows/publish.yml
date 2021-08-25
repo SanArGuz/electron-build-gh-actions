@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
         with:
           node-version: "10.15.3"
       - name: npm clear cache
@@ -17,4 +16,4 @@ jobs:
       - name: run linter validation
         run: npm run lint
       - name: Publish to AWS
-        run: npm run electron:publish
+        run: npm run publish
