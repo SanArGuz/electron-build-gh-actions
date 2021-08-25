@@ -8,8 +8,8 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-builder",
-    "lint": "echo \"No linting configured\""
+    "dist": "electron-builder --publish never --linux",
+    "release": "npm run dist --publish always"
   },
   "keywords": [],
   "author": {
@@ -17,23 +17,6 @@
     "email": "santiago.arcila@boardgent.com"
   },
   "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "linux"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        }
-      ]
-    }
-  },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
   },
@@ -49,5 +32,13 @@
     "eslint-config-xo": "^0.38.0",
     "eslint-plugin-vue": "^7.16.0",
     "eslint-plugin-html": "^6.1.2"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "s3",
+        "bucket": "sax-electron-app"
+      }
+    ]
   }
 }

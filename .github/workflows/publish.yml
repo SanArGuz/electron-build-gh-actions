@@ -13,7 +13,5 @@ jobs:
         run: npm cache clear --force
       - name: npm install
         run: npm i
-      - name: run linter validation
-        run: npm run lint
       - name: Publish to AWS
-        run: npm run publish
+        run: npm run release
