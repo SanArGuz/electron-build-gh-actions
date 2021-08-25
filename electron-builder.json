@@ -1,0 +1,42 @@
+{
+  "appId": "com.sax.electron.app",
+  "directories": {
+    "buildResources": "./icons"
+  },
+  "win": {
+    "icon": "./icons/icon.ico",
+    "verifyUpdateCodeSignature": false,
+    "publish": [
+      {
+        "provider": "s3",
+        "bucket": "sax-electron-app",
+        "region": "us-east-2",
+        "acl": "public-read",
+        "storageClass": "STANDARD",
+        "encryption": "AES256",
+        "channel": "latest",
+        "path": "/"
+      }
+    ],
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "ia32",
+          "x64"
+        ]
+      }
+    ]
+  },
+  "nsis": {
+    "artifactName": "sax-electron-app.${ext}",
+    "uninstallDisplayName": "sax-electron-app"
+  },
+  "compression": "maximum",
+  "extends": null,
+  "asar": true,
+  "productName": "sax-electron-app",
+  "files": [
+    "dist/**/*"
+  ]
+}
